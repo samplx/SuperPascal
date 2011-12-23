@@ -1,0 +1,18 @@
+
+This directory contains SuperPascal.
+
+The SuperPascal software (hereafter Software) is educational
+software written by Per Brinch Hansen (hereafter  PBH).  The
+Software  consists of the Manuals, Programs, and Scripts for
+the programming language SuperPascal invented  by  PBH.
+
+The Original software is available at:
+	http://brinch-hansen.net/software.shar
+
+The software has be modified for the GNU Pascal compiler
+and Unix and GNU/Linux Operating Systems. See the file
+COPYING for copying permission. All files not included
+in the Original software are covered by the GNU Public
+License, version 3, included in COPYING.GPL3.
+
+

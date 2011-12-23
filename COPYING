@@ -1,0 +1,60 @@
+
+                        DEFINITIONS
+
+The SuperPascal software (hereafter Software) is educational
+software written by Per Brinch Hansen (hereafter  PBH).  The
+Software  consists of the Manuals, Programs, and Scripts for
+the programming language SuperPascal invented  by  PBH.  The
+Software is stored as text in 11 files (hereafter Files).
+  The Manuals, written by PBH, are stored as LaTeX text in 3
+Files:
+
+     report.tex  "The programming language SuperPascal."
+
+     user.tex    "The SuperPascal user manual."
+
+     notes.tex   "The SuperPascal software notes."
+
+  The  Programs,  written by PBH, are a SuperPascal compiler
+and interpreter (hereafter Compiler  and  Interpreter).  The
+Programs   are   written   in   Pascal  for  Sun3  and  Sun4
+workstations running Unix. The Programs are stored as Pascal
+text in 6 Files:
+
+     common.p     The common declarations used by the
+                  Compiler and Interpreter.
+
+     scan.p       The Compiler procedure that performs
+                  lexical analysis.
+
+     parse.p      The Compiler procedure that performs
+                  syntax, scope, and type analysis.
+
+     assemble.p   The Compiler procedure that assembles
+                  interpreted code.
+
+     compile.p    The Compiler program.
+
+     interpret.p  The Interpreter program.
+
+  The  Scripts  are  Unix  shell scripts stored as text in 2
+Files:
+
+   sun3.user  A shell script for compilation of the
+              Programs on a Sun3 workstation under Unix.
+
+   sun4.user  A shell script for compilation of the
+              Programs on a Sun4 workstation under Unix.
+
+                    TERMS AND CONDITIONS
+
+THE MANUALS ARE COPYRIGHTED BY PBH. THE PROGRAMS ARE IN  THE
+PUBLIC DOMAIN. YOU CAN OBTAIN THE SOFTWARE BY ANONYMOUS FTP.
+THE SOFTWARE IS NOT GUARANTEED FOR A PARTICULAR PURPOSE. PBH
+SUPPLIES  THE  SOFTWARE  "AS  IS"  WITHOUT ANY WARRANTIES OR
+REPRESENTATIONS AND DOES NOT  ACCEPT  ANY  LIABILITIES  WITH
+RESPECT  TO THE SOFTWARE. YOU (THE USER) ARE RESPONSIBLE FOR
+SELECTING THE SOFTWARE, AND FOR THE USE AND RESULTS OBTAINED
+FROM  THE  SOFTWARE. YOUR USE OF THE SOFTWARE INDICATES YOUR
+ACCEPTANCE OF THESE TERMS AND CONDITIONS.
+

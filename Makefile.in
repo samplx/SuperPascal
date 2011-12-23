@@ -1,0 +1,124 @@
+
+#
+#	Makefile.in for SuperPascal
+#
+
+VPATH = @srcdir@
+
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+MKDIR_P = @MKDIR_P@
+PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_STRING = @PACKAGE_STRING@
+PACKAGE_TARNAME = @PACKAGE_TARNAME@
+PACKAGE_URL = @PACKAGE_URL@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+datarootdir = @datarootdir@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+prefix = @prefix@
+pdfdir = @pdfdir@
+docdir = @docdir@
+dvidir = @dvidir@
+htmldir = @htmldir@
+psdir = @psdir@
+abs_builddir = @abs_builddir@
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+GPC = @GPC@
+LATEX = @LATEX@
+
+DISTFILES = \
+	assemble.p common.p compile.p interpret.p parse.p scan.p	\
+	notes.tex readthis.tex report.tex user.tex	\
+	READTHIS.html	\
+	aclocal.m4 bootstrap configure.in configure	\
+	Makefile.in	\
+	COPYING COPYING.GPL3 ChangeLog INSTALL NEWS README \
+	install-sh missing
+
+PCFLAGS = @PCFLAGS@
+PCPPFLAGS = -I${srcdir}
+
+all:	programs doc
+
+programs: sc sr
+
+sc:	compile.p common.p scan.p parse.p assemble.p
+	${GPC} ${PCFLAGS} ${PCPPFLAGS} -o sc ${srcdir}/compile.p
+
+sr:	interpret.p common.p
+	${GPC} ${PCFLAGS} ${PCPPFLAGS} -o sr ${srcdir}/interpret.p
+
+install:	install-exec install-data install-doc
+
+install-exec:	programs
+	[ -d ${DESTDIR}${bindir} ] || ${MKDIR_P} ${DESTDIR}${bindir}
+	${INSTALL_PROGRAM} sc ${bindir}
+	${INSTALL_PROGRAM} sr ${bindir} 
+
+install-data:
+
+install-doc:	doc
+	[ -d ${DESTDIR}${pdfdir} ] || ${MKDIR_P} ${DESTDIR}${pdfdir}
+	${INSTALL_DATA} notes.pdf readthis.pdf report.pdf user.pdf ${pdfdir}
+	[ -d ${DESTDIR}${dvidir} ] || ${MKDIR_P} ${DESTDIR}${dvidir}
+	${INSTALL_DATA} notes.dvi readthis.dvi report.dvi user.dvi ${dvidir}
+	[ -d ${DESTDIR}${htmldir} ] || ${MKDIR_P} ${DESTDIR}${htmldir}
+	${INSTALL_DATA} ${srcdir}/READTHIS.html ${htmldir}
+
+doc:	pdf-doc dvi-doc READTHIS.html
+
+pdf-doc:	notes.pdf readthis.pdf report.pdf user.pdf
+
+notes.pdf:	notes.tex
+	${LATEX} -output-format=pdf ${srcdir}/notes.tex
+
+readthis.pdf:	readthis.tex
+	${LATEX} -output-format=pdf ${srcdir}/readthis.tex
+
+report.pdf:	report.tex
+	${LATEX} -output-format=pdf ${srcdir}/report.tex
+
+user.pdf:	user.tex
+	${LATEX} -output-format=pdf ${srcdir}/user.tex
+
+dvi-doc:	notes.dvi readthis.dvi report.dvi user.dvi
+
+notes.dvi:	notes.tex
+	${LATEX} -output-format=dvi ${srcdir}/notes.tex
+
+readthis.dvi:	readthis.tex
+	${LATEX} -output-format=dvi ${srcdir}/readthis.tex
+
+report.dvi:	report.tex
+	${LATEX} -output-format=dvi ${srcdir}/report.tex
+
+user.dvi:	user.tex
+	${LATEX} -output-format=dvi ${srcdir}/user.tex
+
+check:
+	@echo "No test suite for ${PACKAGE_NAME}."
+
+clean:
+	${RM} notes.log readthis.log report.log user.log
+	${RM} notes.aux readthis.aux report.aux user.aux
+
+distclean:	clean
+	${RM} sc sr
+	${RM} config.log config.status Makefile
+	${RM} notes.pdf readthis.pdf report.pdf user.pdf
+	${RM} notes.dvi readthis.dvi report.dvi user.dvi
+
+dist:
+	(cd ${srcdir}; \
+		tar -cjhf ${abs_builddir}/${PACKAGE_TARNAME}.tar.bz2 \
+			${DISTFILES})
+
+.PHONY: all programs \
+	install install-exec install-data install-doc	\
+	doc pdf-doc dvi-doc \
+	check clean distclean dist

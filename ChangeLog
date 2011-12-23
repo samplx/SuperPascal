@@ -1,0 +1,32 @@
+
+
+2011-03-17  Jim Burlingame <jb@samplx.org>
+	
+	*   Initial Gnu Pascal revision.
+    *   Makefile.in: Initial revision.
+    *   aclocal.m4: Initial revision.
+    *   AUTHORS: Initial revision.
+    *   bootstrap:  Initial revision.
+    *   ChangeLog: (this file) Initial revision.
+    *   common.p: Added timefilename and copyparam procedures.
+    *   compile.p: Change errors file to use standard error.
+        Call trimfilename() to remove trailing spaces from filenames.
+        Allow source and code file names to be set from the
+        command-line.
+    *   configure.in:   Initial revision.
+    *   COPYING: Initial revision. From READTHIS.html.
+    *   INSTALL: Initial revision.
+    *   install-sh: Initial revision.
+    *   interpret.p: Use GPC's GetMicroSecondTime rather than Sun Pascal
+        specific clock function. Call trimfilename() to remove trailing
+        spaces from filenames. Allow code, input and output file
+        name to be set from the command-line.
+    *   README: Initial revision.
+    *   READTHIS.html: 
+    *   scan.p: Remove constant expression (ch < chr(null)).
+
+1993-11  Per Brinch Hansen
+
+    *   Original version by from
+        http://brinch-hansen.net/software.shar
+
